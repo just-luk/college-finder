@@ -10,6 +10,7 @@ const defineConfig = (_ctx: ConfigContext): ExpoConfig => ({
   orientation: "portrait",
   icon: "./assets/icon.png",
   userInterfaceStyle: "light",
+  scheme: "myapp",
   splash: {
     image: "./assets/icon.png",
     resizeMode: "contain",
