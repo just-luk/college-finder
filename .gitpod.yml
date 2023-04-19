@@ -5,4 +5,4 @@
 # Learn more from ready-to-use templates: https://www.gitpod.io/docs/introduction/getting-started/quickstart
 
 tasks:
-  - init: pnpm install
+  - init: pnpm i && pnpm i -g @expo/ngrok@^4.1.0
