@@ -15,6 +15,8 @@
         "@acme/api": "*",
         "@acme/tailwind-config": "*",
         "@clerk/clerk-expo": "^0.15.0",
+        "@expo/html-elements": "^0.4.2",
+        "@expo/vector-icons": "^13.0.0",
         "@shopify/flash-list": "^1.4.0",
         "@tanstack/react-query": "^4.16.1",
         "@trpc/client": "^10.1.0",

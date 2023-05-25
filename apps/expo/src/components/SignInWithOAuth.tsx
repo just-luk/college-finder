@@ -2,6 +2,7 @@ import { useOAuth } from "@clerk/clerk-expo";
 import React from "react";
 import { Button, View } from "react-native";
 import { useWarmUpBrowser } from "../hooks/useWarmUpBrowser";
+import { AntDesign } from '@expo/vector-icons'; 
 
 const SignInWithOAuth = () => {
   useWarmUpBrowser();
@@ -27,6 +28,7 @@ const SignInWithOAuth = () => {
 
   return (
     <View className="rounded-lg border-2 border-gray-500 p-4">
+      <AntDesign name="google" size={24} color="black" />
       <Button
         title="Sign in with Google"
         onPress={handleSignInWithDiscordPress}

@@ -308,34 +308,35 @@ def split_string(s):
     output_data.append(word)
     return output_data
 
-with open('dump.sql', 'r') as r:
+with open('dumps/dump.sql', 'r') as r:
     lines = r.readlines()
 
 to_remove = []
 for index, line in enumerate(lines):
     if "2`" in line:
         to_remove.append(index - 1)
-        print(line)
 
 
-data_points = lines[309].split('),(')
-first_part = data_points[0][:31]
-data_points[0] = data_points[0][31:]
-data_points[-1] = data_points[-1][:-2]
-new_data_points = []
-for point in data_points:
-    split_point = split_string(point)
-    new_point = []
-    for i in range(len(split_point)):
-        if i not in to_remove:
-            new_point.append(split_point[i])
-    joined_string = ','.join(new_point)
-    new_data_points.append(joined_string)
-new_data_points[0] = first_part + new_data_points[0]
-new_data_points[-1] = new_data_points[-1] + ');\n'
-new_line = '),('.join(new_data_points)
+new_lines = []
+for i in range(320, 322):
+    data_points = lines[i].split('),(')
+    first_part = data_points[0][:31]
+    data_points[0] = data_points[0][31:]
+    data_points[-1] = data_points[-1][:-2]
+    new_data_points = []
+    for point in data_points[:-1]:
+        split_point = split_string(point)
+        new_point = []
+        for i in range(len(split_point)):
+            if i not in to_remove:
+                new_point.append(split_point[i])
+        joined_string = ','.join(new_point)
+        new_data_points.append(joined_string)
+    new_data_points[0] = first_part + new_data_points[0]
+    new_data_points[-1] = new_data_points[-1] + ');\n'
+    new_line = '),('.join(new_data_points) + '\n'
+    new_lines.append(new_line)
 
-with open('dump_fixed.sql', 'w') as w:
-    w.write(intro)
-    w.write(new_line)
-
+with open('dumps/dump_fixed.sql', 'w') as w:
+    for line in new_lines:
+        w.write(line)

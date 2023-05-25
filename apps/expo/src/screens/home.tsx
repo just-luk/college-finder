@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { Button, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { useAuth } from "@clerk/clerk-expo";
@@ -7,12 +7,14 @@ import { FlashList } from "@shopify/flash-list";
 import type { inferProcedureOutput } from "@trpc/server";
 import type { AppRouter } from "@acme/api";
 
+
+
 import { trpc } from "../utils/trpc";
 
 const SignOut = () => {
   const { signOut } = useAuth();
   return (
-    <View className="absolute bottom-2 mx-4 w-full rounded-lg border-2 border-gray-500 p-4">
+    <View className="absolute bottom-4 mx-4 w-full rounded-lg border-2 border-gray-500 p-4">
       <Button
         title="Sign Out"
         onPress={() => {
@@ -34,87 +36,54 @@ const SignOut = () => {
 //   );
 // };
 
-const CreatePost: React.FC = () => {
-  // const utils = trpc.useContext();
-  // const { mutate } = trpc.post.create.useMutation({
-  //   async onSuccess() {
-  //     await utils.post.all.invalidate();
-  //   },
-  // });
-
-  const [title, onChangeTitle] = React.useState("");
-  const [content, onChangeContent] = React.useState("");
-
-  return (
-    <View className="flex flex-col border-t-2 border-gray-500 p-4">
-      <TextInput
-        className="mb-2 rounded border-2 border-gray-500 p-2 text-white"
-        onChangeText={onChangeTitle}
-        placeholder="Title"
-      />
-      <TextInput
-        className="mb-2 rounded border-2 border-gray-500 p-2 text-white"
-        onChangeText={onChangeContent}
-        placeholder="Content"
-      />
-      <TouchableOpacity
-        className="rounded bg-[#434E62] p-2"
-        // onPress={() => {
-        //   mutate({
-        //     title,
-        //     content,
-        //   });
-        // }}
-      >
-        <Text className="font-semibold text-white">Publish post</Text>
-      </TouchableOpacity>
-    </View>
-  );
-};
-
 export const HomeScreen = () => {
-  // const postQuery = trpc.post.all.useQuery();
-  const [showPost, setShowPost] = React.useState<string | null>(null);
+  const [name, setName] = useState("");
+  console.log(name);
+  const colleges = trpc.colleges.byName.useQuery(name);
 
   return (
     <SafeAreaView className="bg-[#181E29]">
       <View className="h-full w-full p-4">
-        <Text className="mx-auto pb-2 text-5xl font-bold text-white">
+        <Text className="mx-auto pb-2 text-5xl font-bold mt-4 text-white">
          CollegeGuru
         </Text>
 
-        <View className="py-2">
-          {showPost ? (
-            <Text className="text-white">
-              <Text className="font-semibold">Selected post:</Text>
-              {showPost}
-            </Text>
-          ) : (
-            <Text className="font-semibold italic text-white">
-              Press on a post
-            </Text>
-          )}
+        <View className="py-8">
+          <TextInput 
+            className="mb-8 rounded border-2 border-gray-500 p-2 text-black bg-gray-100"
+            placeholder="Search for a college"
+            onChangeText={(text) => setName(text)}
+          />
+          <Text className="text-white font-medium mb-2 text-center">
+            Name: {colleges.data?.name}
+          </Text>
+          <Text className="text-white font-medium mb-2 text-center">
+            Website: {colleges.data?.website}
+          </Text>
+          <Text className="text-white font-medium mb-2 text-center">
+            Percent Admitted: {colleges.data?.percentAdmitted}%
+          </Text>
+          <Text className="text-white font-medium mb-2 text-center">
+            Tuition and Fees: {colleges.data?.tuitionAndFees}$
+          </Text>
+          <Text className="text-white font-medium mb-2 text-center">
+            Application Fee: {colleges.data?.undergradApplicationFee}$
+          </Text>
+          <Text className="text-white font-medium mb-2 text-center">
+            Total Applicants: {colleges.data?.applicantsTotal}
+          </Text>
+          <Text className="text-white font-medium mb-2 text-center">
+            Percent SAT Submits: {colleges.data?.percentSatSubmits}%
+          </Text>
+          <Text className="text-white font-medium mb-2 text-center">
+            Percent ACT Submits: {colleges.data?.percentActSubmits}%
+          </Text>
+          <Text className="text-white font-medium mb-2 text-center">
+            Student Faculty Ratio: (1:{colleges.data?.studentToFaculty})
+          </Text>
         </View>
-
-        {/* <FlashList
-          data={postQuery.data}
-          estimatedItemSize={20}
-          ItemSeparatorComponent={() => <View className="h-2" />}
-          renderItem={(p) => (
-            <TouchableOpacity onPress={() => setShowPost(p.item.id)}>
-              <PostCard post={p.item} />
-            </TouchableOpacity>
-          )}
-        /> */}
-
-        <CreatePost />
         <SignOut />
       </View>
     </SafeAreaView>
   );
 };
-
-database: colleges
-username: wivqtl8v7wmq0suewjlz
-host: aws.connect.psdb.cloud
-password: pscale_pw_MAqHXw51v1AGDfZlBp8RHVBRx0SJ41dkf4imqvXK9Wm

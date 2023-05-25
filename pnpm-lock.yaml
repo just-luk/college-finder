@@ -40,6 +40,12 @@ importers:
       '@clerk/clerk-expo':
         specifier: ^0.15.0
         version: 0.15.0(@babel/core@7.20.5)(@types/react@18.0.34)(expo-auth-session@4.0.3)(expo-web-browser@12.1.1)(react-dom@18.2.0)(react-native@0.71.6)(react@18.2.0)
+      '@expo/html-elements':
+        specifier: ^0.4.2
+        version: 0.4.2
+      '@expo/vector-icons':
+        specifier: ^13.0.0
+        version: 13.0.0
       '@shopify/flash-list':
         specifier: ^1.4.0
         version: 1.4.0(@babel/runtime@7.20.6)(react-native@0.71.6)(react@18.2.0)
@@ -2020,6 +2026,10 @@ packages:
       tslib: 2.4.1
     transitivePeerDependencies:
       - supports-color
+    dev: false
+
+  /@expo/html-elements@0.4.2:
+    resolution: {integrity: sha512-lNioCgdtOrCMMqzHY+PCTdyuWBTU4yMBlOzPSkS4YFIWt9bq0zexM2ZJkpybTXmowNdE3zHO93xxAmiA2yDi2w==}
     dev: false
 
   /@expo/image-utils@0.3.22:

@@ -1,6 +1,5 @@
 // This is your Prisma schema file
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
     provider = "prisma-client-js"
 }
@@ -12,8 +11,8 @@ datasource db {
 }
 
 model colleges {
-    unitid BigInt @id
-    name String
+    unitid Int @id
+    name String?
     year Float?
     studentLevel Float?
     studentsEnrolled Float?
@@ -60,77 +59,77 @@ model colleges {
     admissionsYield Float?
     admissionsYieldMen Float?
     admissionsYieldWomen Float?
-    alias String
-    address String
-    city String
-    state String
-    zip String
+    alias String? @db.Text
+    address String?
+    city String?
+    state String?
+    zip String?
     telephone Float?
-    website String
-    financialAidSite String
-    admissionsSite String
-    applicationSite String
-    netPriceSite String
-    openToPublic String
-    isActive String
-    sector String
-    hospital String
-    hbcu String
-    tribalCollege String
-    openAdmissions String
-    degreeOfUrbanization String
-    titleIndicator String
-    lessThanOneYear String
+    website String? @db.Text
+    financialAidSite String? @db.Text
+    admissionsSite String? @db.Text
+    applicationSite String? @db.Text
+    netPriceSite String? @db.Text
+    openToPublic String?
+    isActive String?
+    sector String?
+    hospital String?
+    hbcu String?
+    tribalCollege String?
+    openAdmissions String?
+    degreeOfUrbanization String?
+    titleIndicator String?
+    lessThanOneYear String?
     lessThanTwelveWeeks Float?
     betweenTwelveWeeksAndYear Float?
-    betweenOneAndTwoYear String
+    betweenOneAndTwoYear String?
     associateDegree Float?
-    betweenTwoAndFourYear String
+    betweenTwoAndFourYear String?
     bachelorDegree Float?
-    postbaccalaureateCertificate String
+    postbaccalaureateCertificate String?
     masterDegree Float?
-    postMaster String
+    postMaster String?
     doctorResearchAndScholarship Float?
     doctorProfessionalPractice Float?
     doctorOther Float?
-    otherDegree String
-    naa String
-    ncaa String
-    naia String
-    njcaa String
-    nscaa String
-    nccaa String
-    otherAthleticAssociation String
-    missionStatement String?
-    missionStatementUrl String
-    dualEnrollment String
-    creditForLifeExperiences String
-    apCredits String
-    noCredits String
-    rotc String
-    studyAbroad String
-    weekendOrEveningCollege String
-    remedialServices String
-    careerOrAcademicService String
-    studentEmployment String
-    placementServices String
-    noServices String
-    noDistanceEducation String
-    percentDisabilities String
-    prepaidTuition String
-    undergradApplicationFee String
-    gradApplicationFee String
-    tuitionVaries String
-    onCampusRequired String
-    housingProvided String
-    boardProvided String
+    otherDegree String?
+    naa String?
+    ncaa String?
+    naia String?
+    njcaa String?
+    nscaa String?
+    nccaa String?
+    otherAthleticAssociation String?
+    missionStatement String? @db.Text
+    missionStatementUrl String? @db.Text
+    dualEnrollment String? @db.Text
+    creditForLifeExperiences String?
+    apCredits String?
+    noCredits String?
+    rotc String?
+    studyAbroad String? @db.Text
+    weekendOrEveningCollege String? @db.Text
+    remedialServices String?
+    careerOrAcademicService String?
+    studentEmployment String?
+    placementServices String?
+    noServices String?
+    noDistanceEducation String?
+    percentDisabilities String?
+    prepaidTuition String?
+    undergradApplicationFee String?
+    gradApplicationFee String?
+    tuitionVaries String?
+    onCampusRequired String?
+    housingProvided String?
+    boardProvided String?
     numberOfPrograms String?
-    undergradDistrictTuition String
+    undergradDistrictTuition String?
     undergradStateTuition Float?
     undergradOutOfStateTuition Float?
-    gradDistrictTuition String
-    gradStateTuition String
-    gradOutOfStateTuition String
+    gradDistrictTuition String?
+    gradStateTuition String?
+    gradOutOfStateTuition String?
     districtPrice Float?
     statePrice Float?
     outOfStatePrice Float?
@@ -138,15 +137,15 @@ model colleges {
     roomAndBoard Float?
     totalUndergradStudents Float?
     fullTimeCohort Float?
-    sizeCategory String
-    totalEnrollment String
-    undergradEnrollment String
-    gradEnrollment String
+    sizeCategory String?
+    totalEnrollment String?
+    undergradEnrollment String?
+    gradEnrollment String?
     totalPercentAmericanIndian Float?
-    totalPercentAsian String
+    totalPercentAsian String?
     totalPercentBlack Float?
-    totalPercentHispanic String
-    totalPercentPacificIslander String
+    totalPercentHispanic String?
+    totalPercentPacificIslander String?
     totalPercentWhite Float?
     totalPercentTwoOrMore Float?
     totalPercentUnknown Float?
@@ -176,7 +175,7 @@ model colleges {
     gradPercentAsianOrPacificIslander Float?
     gradPercentWomen Float?
     studentToFaculty Float?
-    undergradPercentDisabilities String
+    undergradPercentDisabilities String?
     certificatesLessThanYear Float?
     certificatesBetweenOneAndTwo Float?
     certificatesBetweenTwoAndFour Float?
@@ -217,8 +216,8 @@ model colleges {
     graduationRateFiveYears Float?
     graduationRateSixYears Float?
     tuitionAndFees Float?
-    stateAbbreviation String
-    institutionalCategory String
+    stateAbbreviation String?
+    institutionalCategory String?
     retentionRate Float?
     undergradPercentState Float?
     undergradPercentOutOfState Float?
@@ -258,15 +257,15 @@ model colleges {
     officeFte Float?
     naturalResourcesConstructionMaintenanceFte Float?
     productionTransportationMaterialMovingFte Float?
-    secondaryGpa String
-    secondaryRank String
-    secondaryRecord String
-    completionOfPrepProgram String
-    recommendations String
-    formalDemonstrationOfCompetencies String
-    admissionTestScores String
-    otherTest String
-    toefl String
+    secondaryGpa String?
+    secondaryRank String?
+    secondaryRecord String?
+    completionOfPrepProgram String?
+    recommendations String?
+    formalDemonstrationOfCompetencies String?
+    admissionTestScores String?
+    otherTest String?
+    toefl String?
     applicantsTotal Float?
     applicantsMen Float?
     applicantsWomen Float?
