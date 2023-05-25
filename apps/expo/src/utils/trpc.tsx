@@ -29,8 +29,6 @@ const getBaseUrl = () => {
   const localhost = Constants.manifest?.debuggerHost?.split(":")[0];
   if (!localhost)
     throw new Error("failed to get localhost, configure it manually");
-  let url = `http://${localhost}:3000`;
-  url = 'https://3000-justluk-collegefinder-dlbecydorte.ws-us94.gitpod.io';
   return `http://${localhost}:3000`;
 };
 
