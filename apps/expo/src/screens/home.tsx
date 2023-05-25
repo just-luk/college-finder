@@ -12,7 +12,7 @@ import { trpc } from "../utils/trpc";
 const SignOut = () => {
   const { signOut } = useAuth();
   return (
-    <View className="rounded-lg border-2 border-gray-500 p-4">
+    <View className="absolute bottom-2 mx-4 w-full rounded-lg border-2 border-gray-500 p-4">
       <Button
         title="Sign Out"
         onPress={() => {
@@ -23,24 +23,24 @@ const SignOut = () => {
   );
 };
 
-const PostCard: React.FC<{
-  post: inferProcedureOutput<AppRouter["post"]["all"]>[number];
-}> = ({ post }) => {
-  return (
-    <View className="rounded-lg border-2 border-gray-500 p-4">
-      <Text className="text-xl font-semibold text-[#cc66ff]">{post.title}</Text>
-      <Text className="text-white">{post.content}</Text>
-    </View>
-  );
-};
+// const PostCard: React.FC<{
+//   post: inferProcedureOutput<AppRouter["post"]["all"]>[number];
+// }> = ({ post }) => {
+//   return (
+//     <View className="rounded-lg border-2 border-gray-500 p-4">
+//       <Text className="text-xl font-semibold text-[#cc66ff]">{post.title}</Text>
+//       <Text className="text-white">{post.content}</Text>
+//     </View>
+//   );
+// };
 
 const CreatePost: React.FC = () => {
-  const utils = trpc.useContext();
-  const { mutate } = trpc.post.create.useMutation({
-    async onSuccess() {
-      await utils.post.all.invalidate();
-    },
-  });
+  // const utils = trpc.useContext();
+  // const { mutate } = trpc.post.create.useMutation({
+  //   async onSuccess() {
+  //     await utils.post.all.invalidate();
+  //   },
+  // });
 
   const [title, onChangeTitle] = React.useState("");
   const [content, onChangeContent] = React.useState("");
@@ -58,13 +58,13 @@ const CreatePost: React.FC = () => {
         placeholder="Content"
       />
       <TouchableOpacity
-        className="rounded bg-[#cc66ff] p-2"
-        onPress={() => {
-          mutate({
-            title,
-            content,
-          });
-        }}
+        className="rounded bg-[#434E62] p-2"
+        // onPress={() => {
+        //   mutate({
+        //     title,
+        //     content,
+        //   });
+        // }}
       >
         <Text className="font-semibold text-white">Publish post</Text>
       </TouchableOpacity>
@@ -73,14 +73,14 @@ const CreatePost: React.FC = () => {
 };
 
 export const HomeScreen = () => {
-  const postQuery = trpc.post.all.useQuery();
+  // const postQuery = trpc.post.all.useQuery();
   const [showPost, setShowPost] = React.useState<string | null>(null);
 
   return (
-    <SafeAreaView className="bg-[#2e026d] bg-gradient-to-b from-[#2e026d] to-[#15162c]">
+    <SafeAreaView className="bg-[#181E29]">
       <View className="h-full w-full p-4">
         <Text className="mx-auto pb-2 text-5xl font-bold text-white">
-          Create <Text className="text-[#cc66ff]">T3</Text> Turbo
+         CollegeGuru
         </Text>
 
         <View className="py-2">
@@ -96,7 +96,7 @@ export const HomeScreen = () => {
           )}
         </View>
 
-        <FlashList
+        {/* <FlashList
           data={postQuery.data}
           estimatedItemSize={20}
           ItemSeparatorComponent={() => <View className="h-2" />}
@@ -105,7 +105,7 @@ export const HomeScreen = () => {
               <PostCard post={p.item} />
             </TouchableOpacity>
           )}
-        />
+        /> */}
 
         <CreatePost />
         <SignOut />
@@ -113,3 +113,8 @@ export const HomeScreen = () => {
     </SafeAreaView>
   );
 };
+
+database: colleges
+username: wivqtl8v7wmq0suewjlz
+host: aws.connect.psdb.cloud
+password: pscale_pw_MAqHXw51v1AGDfZlBp8RHVBRx0SJ41dkf4imqvXK9Wm
